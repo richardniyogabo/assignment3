@@ -10,8 +10,15 @@ const Movies = ({ navigation }) => {
     const [loadMore, setLoadMore] = useState(false);
 
     useEffect(() => {
+        getOfflineData();
         getMovies(1);
     }, []);
+
+    const getOfflineData = async () => {
+        const moviesString = await AsyncStorage.getItem('movies');
+        const parsedMovies = JSON.parse(moviesString);
+        setMovies(parsedMovies);
+    }
 
     const getMovies =  async(next) => {
         try {
