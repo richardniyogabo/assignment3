@@ -169,7 +169,7 @@ const Home = ({ navigation }) => {
                 }}
             />
         </View>
-        {/* <TouchableOpacity onPress={() => navigation.navigate('Movies')} style={{
+        <TouchableOpacity onPress={() => navigation.navigate('Movies')} style={{
             width: '90%',
             height: 50,
             justifyContent: 'center',
@@ -179,7 +179,7 @@ const Home = ({ navigation }) => {
             alignSelf: 'center',
         }}>
             <Text>Go To Movies</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
 
         {editModal && <View style={{
             width: '100%',
