@@ -5,9 +5,7 @@ import Login from './screens/Login';
 import Home from './screens/Home';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { UserContext } from './context/app.context';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
-import Movies from './screens/Movies';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -24,7 +22,6 @@ export default function App() {
   }
 
   return (
-      <Provider store={store}>
         <UserContext.Provider value={{ token, setToken }}>
           <NavigationContainer>
             <Stack.Navigator>
@@ -33,9 +30,9 @@ export default function App() {
                 <Stack.Screen name="Home" component={Home} options={{
                 headerShown: false,
               }} />
-              <Stack.Screen name="Movies" component={Movies} options={{
+              {/* <Stack.Screen name="Movies" component={Movies} options={{
                 headerShown: true,
-              }} />
+              }} /> */}
               </>
               :
               <Stack.Screen name="Login" component={Login} options={{
@@ -45,6 +42,5 @@ export default function App() {
             </Stack.Navigator>
           </NavigationContainer>
         </UserContext.Provider>
-      </Provider>
   );
 }

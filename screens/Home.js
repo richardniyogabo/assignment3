@@ -2,65 +2,65 @@ import { Image, StyleSheet, Text, TouchableOpacity, View, SafeAreaView, TextInpu
 import React, { useContext, useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { UserContext } from '../context/app.context';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { addTodo, checkTodo, deleteTodo , editTodo} from '../redux/slices/todoSlice';
-import Checkbock from 'expo-checkbox';
+// import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { addTodo, checkTodo, deleteTodo , editTodo} from '../redux/slices/todoSlice';
+// import Checkbock from 'expo-checkbox';
 import { Entypo } from '@expo/vector-icons';
 
 const Home = ({ navigation }) => {
     const [userInfo,  setUserInfo] = useState(null);
-    const [text, setText] = useState('');
-    const [index, setIndex] = useState();
-    const [editModal, setEditModal] = useState(false);
+    // const [text, setText] = useState('');
+    // const [index, setIndex] = useState();
+    // const [editModal, setEditModal] = useState(false);
     const { setToken } = useContext(UserContext);
-    const dispatch = useDispatch();
-    const todos = useSelector((state) => state.todo);
+    // const dispatch = useDispatch();
+    // const todos = useSelector((state) => state.todo);
 
     useEffect(() => {
         getUserInfo();
-    }, [todos]);
+    }, []);
 
-    const renderItem = ({ item, index }) => {
-        return (
-            <View style={{
-                width: '90%',
-                alignSelf: 'center',
-                height: 50,
-                borderRadius: 5,
-                borderWidth: 1,
-                alignItems: 'center',
-                paddingHorizontal: 10,
-                borderColor: '#c4c4c4',
-                marginBottom: 10,
-                flexDirection: 'row'
-            }}>
-                <Checkbock
-                    value={item.completed}
-                    onValueChange={() => {
-                        dispatch(checkTodo(item.id))
-                    }}
-                    color={item.completed ? '#4630EB' : undefined}
-                />
-                <Text style={{ fontSize: 19, marginLeft: 10, textDecorationLine: item.completed ? 'line-through' : 'none'  }}>{item.text}</Text>
-                <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'flex-end',
-                    position: 'absolute',
-                    right: 20,
-                }}>
-                    <TouchableOpacity onPress={() => {
-                        setIndex(item.id);
-                        setEditModal(true);
-                        setText(item.text);
-                    }} style={{ marginRight: 10,}}><Entypo name='edit' size={24} color={'#5f4eee'} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => {
-                        dispatch(deleteTodo(index));
-                    }} ><Entypo name='trash' size={24} color={'#a12'} /></TouchableOpacity>
-                </View>
-            </View>
-        )
-    }
+    // const renderItem = ({ item, index }) => {
+    //     return (
+    //         <View style={{
+    //             width: '90%',
+    //             alignSelf: 'center',
+    //             height: 50,
+    //             borderRadius: 5,
+    //             borderWidth: 1,
+    //             alignItems: 'center',
+    //             paddingHorizontal: 10,
+    //             borderColor: '#c4c4c4',
+    //             marginBottom: 10,
+    //             flexDirection: 'row'
+    //         }}>
+    //             <Checkbock
+    //                 value={item.completed}
+    //                 onValueChange={() => {
+    //                     dispatch(checkTodo(item.id))
+    //                 }}
+    //                 color={item.completed ? '#4630EB' : undefined}
+    //             />
+    //             <Text style={{ fontSize: 19, marginLeft: 10, textDecorationLine: item.completed ? 'line-through' : 'none'  }}>{item.text}</Text>
+    //             <View style={{
+    //                 flexDirection: 'row',
+    //                 alignItems: 'flex-end',
+    //                 position: 'absolute',
+    //                 right: 20,
+    //             }}>
+    //                 <TouchableOpacity onPress={() => {
+    //                     setIndex(item.id);
+    //                     setEditModal(true);
+    //                     setText(item.text);
+    //                 }} style={{ marginRight: 10,}}><Entypo name='edit' size={24} color={'#5f4eee'} /></TouchableOpacity>
+    //                 <TouchableOpacity onPress={() => {
+    //                     dispatch(deleteTodo(index));
+    //                 }} ><Entypo name='trash' size={24} color={'#a12'} /></TouchableOpacity>
+    //             </View>
+    //         </View>
+    //     )
+    // }
 
     const getUserInfo = async () => {
         const token = await AsyncStorage.getItem('token');
@@ -118,7 +118,7 @@ const Home = ({ navigation }) => {
             }} />
             </TouchableOpacity>
         </View>
-        <View style={{
+        {/* <View style={{
             flexDirection: 'row',
             alignItems: 'center',
             marginTop: 20,
@@ -252,7 +252,7 @@ const Home = ({ navigation }) => {
                 }}>X</Text>
             </TouchableOpacity>
         </View>
-        </View>}
+        </View>} */}
     </SafeAreaView>
   )
 }
